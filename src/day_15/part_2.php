@@ -4,7 +4,6 @@ require_once('../functions.php');
 
 $data = loadFile('input.txt');
 //$data = loadFile('test.txt');
-$word = '';
 $sum = 0;
 $boxs = [];
 

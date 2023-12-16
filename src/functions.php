@@ -33,4 +33,3 @@ function paint($array ,$key = null){
     }
     echo '---------------';
 }
-?>
