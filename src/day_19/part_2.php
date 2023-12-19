@@ -5,28 +5,24 @@ require_once('../functions.php');
 $data = loadFile('input.txt');
 //$data = loadFile('test.txt');
 $instructions = [];
-$points = [];
-$point = 0;
 
-$array = 'instructions';
 foreach($data as $line){
     if($line == ''){
         break;
     }
-    if($array == 'instructions'){
-        $aux = explode('{',str_replace('}','',$line));
-        $arrayAux = explode(',',$aux[1]);
-        $arrayConditions = [];
-        foreach ($arrayAux as $condition){
-            if(str_contains($condition,':')) {
-                $condAux = explode(':', $condition);
-                $arrayConditions[] = ['condition' => $condAux[0], 'next' => $condAux[1]];
-            }else{
-                $arrayConditions[] = ['condition' => 'true', 'next' => $condition];
-            }
+    $aux = explode('{',str_replace('}','',$line));
+    $arrayAux = explode(',',$aux[1]);
+    $arrayConditions = [];
+    foreach ($arrayAux as $condition){
+        if(str_contains($condition,':')) {
+            $condAux = explode(':', $condition);
+            $arrayConditions[] = ['condition' => $condAux[0], 'next' => $condAux[1]];
+        }else{
+            $arrayConditions[] = ['condition' => 'true', 'next' => $condition];
         }
-        $instructions[$aux[0]] = $arrayConditions;
     }
+    $instructions[$aux[0]] = $arrayConditions;
+
 }
 
 $pendingCombinations = [['condition' => '', 'next' => 'in']];
