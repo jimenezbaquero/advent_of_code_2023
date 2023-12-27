@@ -3,7 +3,7 @@
 require_once('../functions.php');
 
 $data = loadFile('input.txt');
-$data = loadFile('test.txt');
+//$data = loadFile('test.txt');
 $numbers = [];
 
 foreach ($data as $line){
